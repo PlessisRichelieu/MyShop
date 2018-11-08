@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A3E57A4C-13C2-4D54-AA5B-CB5C2A561E50}</ProjectGuid>
+    <ProjectGuid>{869E42D1-A5EE-42E5-9920-A39B2B7B6311}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyShop.DataAccess.InMemory</RootNamespace>
