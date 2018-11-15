@@ -44,7 +44,7 @@ namespace MyShop.DataAccess.InMemory
             }
             else
             {
-                throw new Exception("Product not find");
+                throw new Exception("Product not found");
             }
         }
 
