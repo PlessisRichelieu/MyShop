@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MyShop.Core.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }
-
+       
         [StringLength(20)]
         public string Name { get; set; }
         public string Decription { get; set; }
@@ -20,10 +20,5 @@ namespace MyShop.Core.Models
         public string category { get; set; }    
 
         public string Image { get; set; }
-
-        public Product ()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
     }
 }
