@@ -8,7 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MyShop.Core.Models;
 using MyShop.WebUI.Models;
+using MyShop.Core.Contracts;
 
 namespace MyShop.WebUI.Controllers
 {
@@ -17,15 +19,13 @@ namespace MyShop.WebUI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IRepository<Customer> CustomerRepository;
 
-        public AccountController()
-        {
-        }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController( IRepository <Customer> customers )
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            
+            this.CustomerRepository = customers;
         }
 
         public ApplicationSignInManager SignInManager
@@ -155,6 +155,22 @@ namespace MyShop.WebUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Customer customer = new Customer()
+                    {
+                        City = model.City,
+                        EMail = model.EMail,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Province = model.Province,
+                        Street = model.Street,
+                        PostCode = model.PostCode,
+                        UserId = user.Id
+                    };
+
+                    CustomerRepository.Insert(customer);
+                    CustomerRepository.Commit();
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

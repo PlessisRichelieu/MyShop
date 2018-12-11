@@ -10,19 +10,12 @@ using MyShop.WebUI.Controllers;
 namespace MyShop.WebUI.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class UnitTest1
     {
         [TestMethod]
-        public void Index()
+        public void IndexPageDoesReturnProducts ()
         {
-            //// Arrange
-            //HomeController controller = new HomeController();
-
-            //// Act
-            //ViewResult result = controller.Index() as ViewResult;
-
-            //// Assert
-            //Assert.IsNotNull(result);
+            
         }
 
         
