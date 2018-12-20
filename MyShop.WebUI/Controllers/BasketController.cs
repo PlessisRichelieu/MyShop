@@ -10,14 +10,16 @@ namespace MyShop.WebUI.Controllers
 {
     public class BasketController : Controller
     {
-       
-        IOrderService orderService;
+
+        IRepository<Customer> Customers;
+        IOrderService OrderService;
         IBasketService BasketService;
 
-        public BasketController (IBasketService BasketService, IOrderService OrderService)
+        public BasketController (IBasketService BasketService, IOrderService OrderService, IRepository <Customer> Customers)
         {
             this.BasketService = BasketService;
-            this.orderService = OrderService;
+            this.OrderService = OrderService;
+            this.Customers = Customers;
         }
         public ActionResult Index()
         {
@@ -46,21 +48,46 @@ namespace MyShop.WebUI.Controllers
             return PartialView(BasketSummary);
         }
 
-        public ActionResult Checkout ()
+        [Authorize]
+        public ActionResult Checkout()
         {
-            return View();
+            Customer customer = Customers.Collection().FirstOrDefault(c => c.EMail == User.Identity.Name);
+
+            if (customer != null)
+            {
+                Order order = new Order()
+                {
+                    EMail = customer.EMail,
+                    City = customer.City,
+                    Province = customer.Province,
+                    Street = customer.Street,
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    PostCode = customer.PostCode
+                };
+
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+            
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Checkout (Order Order)
         {
             var BasketItems = BasketService.GetBasketItems(this.HttpContext);
 
             Order.OrderStatus = "Order Created";
 
+            Order.EMail = User.Identity.Name;
+
             Order.OrderStatus = "Payment Processed";
 
-            orderService.CreateOrder(Order, BasketItems);
+            OrderService.CreateOrder(Order, BasketItems);
             BasketService.ClearBasket(this.HttpContext);
 
             return RedirectToAction("ThankYou", new { OrderId = Order.Id });
