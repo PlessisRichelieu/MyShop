@@ -160,9 +160,9 @@ namespace MyShop.WebUI.Controllers
                         Email = model.Email,
                         FirstName = model.FirstName,
                         LastName = model.LastName,
-                        State = model.State,
+                        Province = model.Province,
                         Street = model.Street,
-                        ZipCode = model.ZipCode,
+                        PostCode = model.PostCode,
                         UserId = user.Id
                     };
 

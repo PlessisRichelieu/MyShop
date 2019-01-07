@@ -88,9 +88,9 @@ namespace MyShop.WebUI.Models
         public string Street { get; set; }
         [Required]
         public string City { get; set; }
-        public string State { get; set; }
+        public string Province { get; set; }
         [Required]
-        public string ZipCode { get; set; }
+        public string PostCode { get; set; }
     }
 
     public class ResetPasswordViewModel

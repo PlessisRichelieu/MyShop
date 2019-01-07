@@ -9,10 +9,9 @@ namespace MyShop.Core.Models
     public class Order : BaseEntity
     {
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
 
-        public string EMail { get; set; }
+        public string Email { get; set; }
 
         public string Street { get; set; }
 
@@ -25,11 +24,10 @@ namespace MyShop.Core.Models
         public string OrderStatus { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
-        public Order()
+
+        public Order ()
         {
             this.OrderItems = new List<OrderItem>();
         }
- 
-        
     }
 }
