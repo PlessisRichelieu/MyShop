@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{869E42D1-A5EE-42E5-9920-A39B2B7B6311}</ProjectGuid>
+    <ProjectGuid>{E7FD92A1-7304-4F70-9BA5-E214CB28A863}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyShop.DataAccess.InMemory</RootNamespace>
     <AssemblyName>MyShop.DataAccess.InMemory</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyShop.Core\MyShop.Core.csproj">
-      <Project>{bee86fd0-5fd4-4e55-863f-b02dc7a6ee03}</Project>
+      <Project>{9b029460-6f4e-46ae-9b88-08c5fe08c0a4}</Project>
       <Name>MyShop.Core</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,57 +1,53 @@
-﻿using System;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using MyShop.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MyShop.Core.Models;
-using MyShop.DataAccess.InMemory;
-using MyShop.Core.ViewModels;
-using MyShop.Core.Contracts;
-using System.IO;
-
 
 namespace MyShop.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-
         IRepository<Product> context;
-        IRepository<ProductCategory> ProductCategories;
+        IRepository<ProductCategory> productCategories;
 
-        public HomeController(IRepository<Product> ProductContext, IRepository<ProductCategory> ProductCategoryContext)
+        public HomeController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = ProductContext;
-            ProductCategories = ProductCategoryContext;
+            context = productContext;
+            productCategories = productCategoryContext;
         }
-        public ActionResult Index(string Category = null)
+
+        public ActionResult Index(string Category=null)
         {
             List<Product> products;
-            List<ProductCategory> categories = ProductCategories.Collection().ToList();
+            List<ProductCategory> categories = productCategories.Collection().ToList();
 
             if (Category == null)
             {
-              products =  context.Collection().ToList();
+                products = context.Collection().ToList();
             }
-            else
-            {
-                products = context.Collection().Where(p => p.category == Category).ToList();
+            else {
+                products = context.Collection().Where(p => p.Category == Category).ToList();
             }
 
             ProductListViewModel model = new ProductListViewModel();
             model.Products = products;
             model.ProductCategories = categories;
+
+
             return View(model);
         }
 
-        public ActionResult Details (string Id)
-        {
+        public ActionResult Details(string Id) {
             Product product = context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            else
-            {
+            else {
                 return View(product);
             }
         }

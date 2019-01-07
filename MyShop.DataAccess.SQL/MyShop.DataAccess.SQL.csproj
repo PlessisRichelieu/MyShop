@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{78FAB0F1-A6BA-4173-A282-DCC6798139EF}</ProjectGuid>
+    <ProjectGuid>{3A4704F8-042D-4450-A79A-AA096ED4F5CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyShop.DataAccess.SQL</RootNamespace>
     <AssemblyName>MyShop.DataAccess.SQL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,25 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\201811221541222_Initial.cs" />
-    <Compile Include="Migrations\201811221541222_Initial.Designer.cs">
-      <DependentUpon>201811221541222_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201711071327340_Initial.cs" />
+    <Compile Include="Migrations\201711071327340_Initial.Designer.cs">
+      <DependentUpon>201711071327340_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812010818438_AddBasket.cs" />
-    <Compile Include="Migrations\201812010818438_AddBasket.Designer.cs">
-      <DependentUpon>201812010818438_AddBasket.cs</DependentUpon>
+    <Compile Include="Migrations\201711091321341_AddBasket.cs" />
+    <Compile Include="Migrations\201711091321341_AddBasket.Designer.cs">
+      <DependentUpon>201711091321341_AddBasket.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812110710241_Add-Customers.cs" />
-    <Compile Include="Migrations\201812110710241_Add-Customers.Designer.cs">
-      <DependentUpon>201812110710241_Add-Customers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812110800492_Add-OrderItems.cs" />
-    <Compile Include="Migrations\201812110800492_Add-OrderItems.Designer.cs">
-      <DependentUpon>201812110800492_Add-OrderItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812110801262_Add-Orders.cs" />
-    <Compile Include="Migrations\201812110801262_Add-Orders.Designer.cs">
-      <DependentUpon>201812110801262_Add-Orders.cs</DependentUpon>
+    <Compile Include="Migrations\201801032024566_AddCustomer.cs" />
+    <Compile Include="Migrations\201801032024566_AddCustomer.Designer.cs">
+      <DependentUpon>201801032024566_AddCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,25 +70,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyShop.Core\MyShop.Core.csproj">
-      <Project>{BEE86FD0-5FD4-4E55-863F-B02DC7A6EE03}</Project>
+      <Project>{9B029460-6F4E-46AE-9B88-08C5FE08C0A4}</Project>
       <Name>MyShop.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811221541222_Initial.resx">
-      <DependentUpon>201811221541222_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711071327340_Initial.resx">
+      <DependentUpon>201711071327340_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812010818438_AddBasket.resx">
-      <DependentUpon>201812010818438_AddBasket.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711091321341_AddBasket.resx">
+      <DependentUpon>201711091321341_AddBasket.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812110710241_Add-Customers.resx">
-      <DependentUpon>201812110710241_Add-Customers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812110800492_Add-OrderItems.resx">
-      <DependentUpon>201812110800492_Add-OrderItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812110801262_Add-Orders.resx">
-      <DependentUpon>201812110801262_Add-Orders.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801032024566_AddCustomer.resx">
+      <DependentUpon>201801032024566_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

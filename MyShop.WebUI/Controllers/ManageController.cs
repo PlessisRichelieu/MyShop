@@ -20,7 +20,6 @@ namespace MyShop.WebUI.Controllers
         {
         }
 
-
         public ApplicationSignInManager SignInManager
         {
             get

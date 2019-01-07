@@ -1,12 +1,11 @@
-﻿using System;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyShop.Core.Contracts;
-using System.Collections.Generic;
-using MyShop.Core.Models;
-using System.Data.Entity;
 
 namespace MyShop.DataAccess.SQL
 {
@@ -14,11 +13,12 @@ namespace MyShop.DataAccess.SQL
     {
         internal DataContext context;
         internal DbSet<T> dbSet;
-        public SQLRepository (DataContext context)
-        {
+
+        public SQLRepository(DataContext context) {
             this.context = context;
             this.dbSet = context.Set<T>();
         }
+
         public IQueryable<T> Collection()
         {
             return dbSet;
@@ -34,8 +34,8 @@ namespace MyShop.DataAccess.SQL
             var t = Find(Id);
             if (context.Entry(t).State == EntityState.Detached)
                 dbSet.Attach(t);
-                dbSet.Remove(t);
-            
+
+            dbSet.Remove(t);
         }
 
         public T Find(string Id)
@@ -45,7 +45,7 @@ namespace MyShop.DataAccess.SQL
 
         public void Insert(T t)
         {
-             dbSet.Add(t);
+            dbSet.Add(t);
         }
 
         public void Update(T t)

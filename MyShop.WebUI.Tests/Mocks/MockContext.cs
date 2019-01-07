@@ -1,23 +1,21 @@
-﻿using System;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyShop.Core.Contracts;
-using MyShop.Core.Models;
 
 namespace MyShop.WebUI.Tests.Mocks
 {
-   public class MockContext <T> : IRepository <T> where T : BaseEntity
+    public class MockContext<T> : IRepository<T> where T: BaseEntity
     {
         List<T> items;
-        string ClassName;
+        string className;
 
-        public MockContext  ()
-        {
-           
+        public MockContext()
+        { 
             items = new List<T>();
-           
         }
 
         public void Commit()
@@ -32,31 +30,29 @@ namespace MyShop.WebUI.Tests.Mocks
 
         public void Update(T t)
         {
-            T TtoUpdate = items.Find(i => i.Id == t.Id);
+            T tToUpdate = items.Find(i => i.Id == t.Id);
 
-            if (TtoUpdate != null)
+            if (tToUpdate != null)
             {
-                TtoUpdate = t;
+                tToUpdate = t;
             }
             else
             {
-                throw new Exception(ClassName + "Not Found");
+                throw new Exception(className + " Not found");
             }
         }
 
         public T Find(string Id)
         {
             T t = items.Find(i => i.Id == Id);
-
             if (t != null)
             {
                 return t;
             }
             else
             {
-                throw new Exception(ClassName + " not found");
+                throw new Exception(className + " Not found");
             }
-
         }
 
         public IQueryable<T> Collection()
@@ -64,22 +60,20 @@ namespace MyShop.WebUI.Tests.Mocks
             return items.AsQueryable();
         }
 
-        public void Delete(String Id)
+        public void Delete(string Id)
         {
+            T tToDelete = items.Find(i => i.Id == Id);
 
-            T TtoDelete = items.Find(i => i.Id == Id);
-
-            if (TtoDelete != null)
+            if (tToDelete != null)
             {
-                items.Remove(TtoDelete);
+                items.Remove(tToDelete);
             }
             else
             {
-                throw new Exception(ClassName + "Not Found");
+                throw new Exception(className + " Not found");
             }
-
         }
-
 
     }
 }
+
