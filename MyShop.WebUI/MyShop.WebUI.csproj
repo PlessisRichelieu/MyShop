@@ -216,6 +216,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901070832389_InitialCreate.cs" />
+    <Compile Include="Migrations\201901070832389_InitialCreate.Designer.cs">
+      <DependentUpon>201901070832389_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901090709229_Initial_BugFree.cs" />
+    <Compile Include="Migrations\201901090709229_Initial_BugFree.Designer.cs">
+      <DependentUpon>201901090709229_Initial_BugFree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -304,6 +313,8 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Basket\Index.cshtml" />
     <Content Include="Views\Basket\BasketSummary.cshtml" />
+    <Content Include="Views\Basket\Checkout.cshtml" />
+    <Content Include="Views\Basket\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +342,14 @@
       <Project>{462aa931-d9e7-4b8a-840b-c8026f2c0fc0}</Project>
       <Name>MyShop.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901070832389_InitialCreate.resx">
+      <DependentUpon>201901070832389_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901090709229_Initial_BugFree.resx">
+      <DependentUpon>201901090709229_Initial_BugFree.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

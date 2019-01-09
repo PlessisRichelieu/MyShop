@@ -3,55 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyShop.Core.Contracts;
 using MyShop.Core.Models;
+using MyShop.Core.Contracts;
 using MyShop.Core.ViewModels;
 
 namespace MyShop.Services
 {
     public class OrderService : IOrderService
     {
-        IRepository<Order> OrderContext;
-        public OrderService (IRepository <Order> orders)
+        IRepository<Order> orderContext;
+        public OrderService (IRepository <Order> OrderContext)
         {
-
-            this.OrderContext = orders;
-
+            this.orderContext = OrderContext;
         }
-
-        public void CreateOrder(Order BaseOrder, List<BasketItemViewModel> basketItems)
+        public void CreateOrder(Order BaseOrder, List<BasketItemViewModel> items)
         {
-            foreach (var item in basketItems)
+            foreach (var item in items)
             {
                 BaseOrder.OrderItems.Add(new OrderItem()
                 {
-                    ProductId = item.Id,
-                    Image = item.ImageUrl,
-                    Price = item.Price,
+                    OrderId = item.Id,
                     ProductName = item.ProductName,
-                    Quantity = item.Quantity
-
+                    Price = item.Price,
+                    Quantity = item.Quanity,
+                    Image = item.Image
                 });
+                
             }
 
-            OrderContext.Insert(BaseOrder);
-            OrderContext.Commit();
-        }
-
-        public List <Order> GetOrderLst ()
-        {
-            return OrderContext.Collection().ToList();
-        }
-
-        public Order GetOrder (string Id)
-        {
-            return OrderContext.Find(Id);
-        }
-
-        public void UpdateOrder (Order UpdatedOrder)
-        {
-            OrderContext.Update(UpdatedOrder);
-            OrderContext.Commit();
+            orderContext.Insert(BaseOrder);
+            orderContext.Commit();
         }
     }
 }
