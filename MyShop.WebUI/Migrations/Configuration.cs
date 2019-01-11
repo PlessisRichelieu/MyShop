@@ -10,7 +10,6 @@ namespace MyShop.WebUI.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "MyShop.WebUI.Models.ApplicationDbContext";
         }
 
         protected override void Seed(MyShop.WebUI.Models.ApplicationDbContext context)

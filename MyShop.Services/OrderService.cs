@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyShop.Core.Models;
-using MyShop.Core.Contracts;
 using MyShop.Core.ViewModels;
 
 namespace MyShop.Services
@@ -12,26 +12,24 @@ namespace MyShop.Services
     public class OrderService : IOrderService
     {
         IRepository<Order> orderContext;
-        public OrderService (IRepository <Order> OrderContext)
-        {
+        public OrderService(IRepository<Order> OrderContext) {
             this.orderContext = OrderContext;
         }
-        public void CreateOrder(Order BaseOrder, List<BasketItemViewModel> items)
+
+        public void CreateOrder(Order baseOrder, List<BasketItemViewModel> basketItems)
         {
-            foreach (var item in items)
-            {
-                BaseOrder.OrderItems.Add(new OrderItem()
+            foreach (var item in basketItems) {
+                baseOrder.OrderItems.Add(new OrderItem()
                 {
-                    OrderId = item.Id,
-                    ProductName = item.ProductName,
+                    ProductId = item.Id,
+                    Image = item.Image,
                     Price = item.Price,
-                    Quantity = item.Quanity,
-                    Image = item.Image
+                    ProductName = item.ProductName,
+                    Quanity = item.Quanity
                 });
-                
             }
 
-            orderContext.Insert(BaseOrder);
+            orderContext.Insert(baseOrder);
             orderContext.Commit();
         }
     }

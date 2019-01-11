@@ -76,13 +76,13 @@ namespace MyShop.Services
                 {
                     BasketId = basket.Id,
                     ProductId = productId,
-                    Quanity = 1
+                    Quantity = 1
                 };
 
                 basket.BasketItems.Add(item);
             }
             else {
-                item.Quanity = item.Quanity + 1;
+                item.Quantity = item.Quantity + 1;
             }
 
             basketContext.Commit();
@@ -108,7 +108,7 @@ namespace MyShop.Services
                                select new BasketItemViewModel()
                                {
                                    Id = b.Id,
-                                   Quanity = b.Quanity,
+                                   Quanity = b.Quantity,
                                    ProductName = p.Name,
                                    Image = p.Image,
                                    Price = p.Price
@@ -128,11 +128,11 @@ namespace MyShop.Services
             if (basket != null)
             {
                 int? basketCount = (from item in basket.BasketItems
-                                    select item.Quanity).Sum();
+                                    select item.Quantity).Sum();
 
                 decimal? basketTotal = (from item in basket.BasketItems
                                         join p in productContext.Collection() on item.ProductId equals p.Id
-                                        select item.Quanity * p.Price).Sum();
+                                        select item.Quantity * p.Price).Sum();
 
                 model.BasketCount = basketCount ?? 0;
                 model.BasketTotal = basketTotal ?? decimal.Zero;
@@ -144,10 +144,9 @@ namespace MyShop.Services
             }
         }
 
-        public void ClearBasket (HttpContextBase httpContext)
-        {
-            Basket Basket = GetBasket(httpContext, false);
-            Basket.BasketItems.Clear();
+        public void ClearBasket(HttpContextBase httpContext) {
+            Basket basket = GetBasket(httpContext, false);
+            basket.BasketItems.Clear();
             basketContext.Commit();
         }
     }

@@ -48,33 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\201901091147208_Products.cs" />
-    <Compile Include="Migrations\201901091147208_Products.Designer.cs">
-      <DependentUpon>201901091147208_Products.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901091148156_ProductCategories.cs" />
-    <Compile Include="Migrations\201901091148156_ProductCategories.Designer.cs">
-      <DependentUpon>201901091148156_ProductCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901091149155_Baskets.cs" />
-    <Compile Include="Migrations\201901091149155_Baskets.Designer.cs">
-      <DependentUpon>201901091149155_Baskets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901091150133_BasketItems.cs" />
-    <Compile Include="Migrations\201901091150133_BasketItems.Designer.cs">
-      <DependentUpon>201901091150133_BasketItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901091151162_Customers.cs" />
-    <Compile Include="Migrations\201901091151162_Customers.Designer.cs">
-      <DependentUpon>201901091151162_Customers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901091153326_Orders.cs" />
-    <Compile Include="Migrations\201901091153326_Orders.Designer.cs">
-      <DependentUpon>201901091153326_Orders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901091154219_OrderItems.cs" />
-    <Compile Include="Migrations\201901091154219_OrderItems.Designer.cs">
-      <DependentUpon>201901091154219_OrderItems.cs</DependentUpon>
+    <Compile Include="Migrations\201901111220110_Initial.cs" />
+    <Compile Include="Migrations\201901111220110_Initial.Designer.cs">
+      <DependentUpon>201901111220110_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,26 +67,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901091147208_Products.resx">
-      <DependentUpon>201901091147208_Products.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901091148156_ProductCategories.resx">
-      <DependentUpon>201901091148156_ProductCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901091149155_Baskets.resx">
-      <DependentUpon>201901091149155_Baskets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901091150133_BasketItems.resx">
-      <DependentUpon>201901091150133_BasketItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901091151162_Customers.resx">
-      <DependentUpon>201901091151162_Customers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901091153326_Orders.resx">
-      <DependentUpon>201901091153326_Orders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901091154219_OrderItems.resx">
-      <DependentUpon>201901091154219_OrderItems.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901111220110_Initial.resx">
+      <DependentUpon>201901111220110_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
