@@ -12,13 +12,15 @@ namespace MyShop.Services
     public class OrderService : IOrderService
     {
         IRepository<Order> orderContext;
-        public OrderService(IRepository<Order> OrderContext) {
+        public OrderService(IRepository<Order> OrderContext)
+        {
             this.orderContext = OrderContext;
         }
 
         public void CreateOrder(Order baseOrder, List<BasketItemViewModel> basketItems)
         {
-            foreach (var item in basketItems) {
+            foreach (var item in basketItems)
+            {
                 baseOrder.OrderItems.Add(new OrderItem()
                 {
                     ProductId = item.Id,
@@ -32,5 +34,22 @@ namespace MyShop.Services
             orderContext.Insert(baseOrder);
             orderContext.Commit();
         }
+
+        public List <Order> GetOrderList()
+        {
+            return orderContext.Collection().ToList();
+        }
+
+        public Order GetOrder (string Id)
+        {
+            return orderContext.Find(Id);
+        }
+
+        public void UpdateOrder (Order UpdatedOrder)
+        {
+            orderContext.Update(UpdatedOrder);
+            orderContext.Commit();
+        }
+
     }
 }
